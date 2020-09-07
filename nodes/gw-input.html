@@ -1,0 +1,52 @@
+<script type="text/javascript">
+    RED.nodes.registerType('iqhome-gw-input',{
+        category: 'iqhome',
+        color: '#767D87',
+        defaults: {
+			name: {value:""},
+			port: {value:"55000", required:true, validate:RED.validators.number()}
+        },
+        outputs:1,
+        icon: "bridge.svg",
+        label: function() {
+            return this.name||"gateway";
+		},
+		paletteLabel: "gateway input"
+    });
+</script>
+
+<script type="text/html" data-template-name="iqhome-gw-input">
+	<div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-port" title="Application Interface Port"><i class="fa fa-globe"></i> Port</label>
+        <input type="text" id="node-input-port" value="55000">
+	</div>
+</script>
+
+<script type="text/html" data-help-name="iqhome-gw-input">
+    <p>
+		An input node for a IQHome gateways.
+		It outputs all sensor data sent through the gateways application interface.
+	</p>
+
+	<h3>Outputs</h3>
+
+	<ol class="node-ports">
+		<li>Standard output
+			<dl class="message-properties">
+				<dt>payload <span class="property-type">array</span></dt>
+				<dd>array containing measurement data objects from each sensor connected to the gateway</dd>
+			</dl>
+		</li>
+	</ol>
+
+	<h3>Details</h3>
+	<p><code>msg.payload</code> is an array containing an entry for each sensor connected to the gateway.</p>
+	<p>
+		Each object contains a <code>device_address</code> field corresponding to the address of the sensor.
+		These addresses can be found in the <b>RF Network</b> tab in the <b>LinkIt!</b> software. 
+	</p>
+</script>
