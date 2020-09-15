@@ -15,7 +15,8 @@
       "sn-th": "nodes/sensors/sn-th.js",
       "si-th": "nodes/sensors/si-th.js",
       "si-t": "nodes/sensors/si-t.js",
-      "adafruit-io": "nodes/adafruit-io.js"
+      "adafruit-io-limiter": "nodes/adafruit-limiter.js",
+      "adafruit-feed": "nodes/adafruit-feed.js"
     }
   }
 }

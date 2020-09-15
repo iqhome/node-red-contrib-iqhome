@@ -1,0 +1,28 @@
+<script type="text/javascript">
+    RED.nodes.registerType('iqhome-adafruit-feed',{
+        category: 'iqhome',
+        color: '#9298a0',
+        defaults: {
+            name: {value: ""},
+            feed: {value: "", required: true},
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-rss",
+        label: function() {
+            return this.name||"Adafruit Feed";
+		},
+		paletteLabel: "adafruit-feed"
+    });
+</script>
+
+<script type="text/html" data-template-name="iqhome-adafruit-feed">
+	<div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-feed" topic="Adafruit feed key"><i class="fa fa-rss"></i> Feed Key</label>
+        <input type="text" id="node-input-feed" placeholder="Feed Key">
+    </div>
+</script>

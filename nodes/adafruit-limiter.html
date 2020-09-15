@@ -1,0 +1,35 @@
+<script type="text/javascript">
+    RED.nodes.registerType('iqhome-adafruit-limiter',{
+        category: 'iqhome',
+        color: '#9298a0',
+        defaults: {
+            name: {value: ""},
+            username: {value: "", required: true},
+            premium: {value: false},
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-clock-o",
+        label: function() {
+            return this.name||"Adafruit Limiter";
+		},
+        paletteLabel: "adafruit-limiter",
+    });
+</script>
+
+<script type="text/html" data-template-name="iqhome-adafruit-limiter">
+	<div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <br>
+    <div class="form-row">
+        <label for="node-input-username" topic="Adafruit username"><i class="fa fa-user"></i> Username</label>
+        <input type="text" id="node-input-username" placeholder="Username">
+    </div>
+    <br>
+    <div class="form-row">
+        <input type="checkbox" id="node-input-premium" style="display:inline-block; width:22px; vertical-align:top;">
+        <label for="node-input-premium" style="width: auto"> Adafruit IO+ Subscription</label>
+    </div>
+</script>
