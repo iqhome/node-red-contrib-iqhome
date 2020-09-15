@@ -6,7 +6,7 @@ module.exports = function(RED) {
         premium: 1100
     }
 
-    function adafruit_limiter(config) {
+    function adafruit_connector(config) {
         RED.nodes.createNode(this, config);
         let node = this;
 
@@ -41,5 +41,5 @@ module.exports = function(RED) {
         });
     }
 
-    RED.nodes.registerType('iqhome-adafruit-limiter', adafruit_limiter);
+    RED.nodes.registerType('iqhome-adafruit-connector', adafruit_connector);
 }

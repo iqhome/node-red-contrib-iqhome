@@ -4,7 +4,8 @@
   "description": "Custom Node-RED nodes for IQHome products.",
   "keywords": [
     "nodered",
-    "node-red"
+    "node-red",
+    "iqhome"
   ],
   "author": "IQHome",
   "license": "ISC",
@@ -15,7 +16,7 @@
       "sn-th": "nodes/sensors/sn-th.js",
       "si-th": "nodes/sensors/si-th.js",
       "si-t": "nodes/sensors/si-t.js",
-      "adafruit-io-limiter": "nodes/adafruit-limiter.js",
+      "adafruit-connector": "nodes/adafruit-connector.js",
       "adafruit-feed": "nodes/adafruit-feed.js"
     }
   }
