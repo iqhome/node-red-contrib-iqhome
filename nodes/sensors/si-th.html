@@ -28,3 +28,37 @@
         <input type="text" id="node-input-address" value="1">
 	</div>
 </script>
+
+<script type="text/html" data-help-name="iqhome-si-th">
+    <p>
+		A decoder node for <b>IQHome SI-TH</b> series sensors.
+	</p>
+
+	<h3>Outputs</h3>
+
+	<ol class="node-ports">
+		<li>Temperature
+			<dl class="message-properties">
+				<dt>payload <span class="property-type">number</span></dt>
+				<dd>measured temperature value sent from the sensor</dd>
+			</dl>
+        </li>
+        <li>Humidity
+			<dl class="message-properties">
+				<dt>payload <span class="property-type">number</span></dt>
+				<dd>measured humidity value sent from the sensor</dd>
+			</dl>
+		</li>
+	</ol>
+
+	<h3>Details</h3>
+	<p><b>This node must be connected to a IQHome Gateway node.</b></p>
+	<p>
+		It separates and outputs the different types of measured values (temperature, humidity, co2) from the <b>IQHome</b> sensor with the given device address.
+    </p>
+    
+    <h3>Note</h3>
+    <p>
+        Not all sensor types (temperature, humidity, co2) are available on every <b>IQHome</b> sensor.
+    </p>
+</script>
