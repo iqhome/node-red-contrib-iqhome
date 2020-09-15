@@ -11,7 +11,7 @@ module.exports = function(RED) {
             if(Array.isArray(payload)) {
                 node.status({});
                 payload.forEach(item => {
-                    if(item.device_address == node.address) {
+                    if(item.device_address === parseInt(node.address)) {
                         send([{payload: item.temperature}, {payload: item.relative_humidity}]);
                         done();
                     }
