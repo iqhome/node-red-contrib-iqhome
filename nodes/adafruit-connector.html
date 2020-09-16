@@ -9,7 +9,7 @@
         },
         inputs: 1,
         outputs: 1,
-        icon: "font-awesome/fa-clock-o",
+        icon: "font-awesome/fa-globe",
         label: function() {
             return this.name||"Adafruit Connector";
 		},
@@ -32,4 +32,32 @@
         <input type="checkbox" id="node-input-premium" style="display:inline-block; width:22px; vertical-align:top;">
         <label for="node-input-premium" style="width: auto"> Adafruit IO+ Subscription</label>
     </div>
+</script>
+
+<script type="text/html" data-help-name="iqhome-adafruit-connector">
+    <p>
+		Format incoming data for a mqtt node connected to Adafruit IO.
+	</p>
+
+	<h3>Outputs</h3>
+
+	<ol class="node-ports">
+		<li>Standard output
+			<dl class="message-properties">
+				<dt>payload <span class="property-type">any</span></dt>
+				<dd>forwarded from the input</dd>
+            </dl>
+            <dl class="message-properties">
+				<dt>topic <span class="property-type">string</span></dt>
+				<dd>formatted for Adafruit IO from <code>msg.feed</code> and <code>username</code></dd>
+			</dl>
+		</li>
+	</ol>
+
+	<h3>Details</h3>
+    <p>This node also manages the rate limiting set by Adafruit.</p>
+    <p>
+        Without a paid Adafruit IO+ subscription it limits throughput to ~30 messages per minute or
+        to ~60 messages per minute with the subscription.
+    </p>
 </script>
