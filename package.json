@@ -7,7 +7,7 @@
     "node-red",
     "iqhome"
   ],
-  "author": "IQHome",
+  "author": "IQHome <io@iqhome.org>",
   "license": "ISC",
   "node-red": {
     "nodes": {
