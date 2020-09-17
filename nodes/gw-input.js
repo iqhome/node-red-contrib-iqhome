@@ -33,7 +33,7 @@ module.exports = function(RED) {
 				node.status({fill: 'green', shape: 'dot', text: 'listening'});
 			} catch(e) {
 				node.status({fill: 'yellow', shape: 'dot', text: 'invalid JSON'});
-				console.log(e);
+				node.error(e);
 			}
 		});
 
@@ -46,7 +46,7 @@ module.exports = function(RED) {
 			try {
 				server.close();
 			} catch (error) {
-				//console.log(error);
+				node.error(error);
 			}
 			if(usedPorts.hasOwnProperty(node.port)) {
 				delete usedPorts[node.port];

@@ -1,0 +1,109 @@
+<script type="text/javascript">
+    RED.nodes.registerType('iqhome-thingspeak',{
+        category: 'iqhome',
+        color: '#9298a0',
+        credentials: {
+            apiKey: {type:"password", required:true}
+        },
+        defaults: {
+            name: {value:""},
+            delay: {value:"15", validate:RED.validators.number()},
+            topic1: {value:""},
+            topic2: {value:""},
+            topic3: {value:""},
+            topic4: {value:""},
+            topic5: {value:""},
+            topic6: {value:""},
+            topic7: {value:""},
+            topic8: {value:""},
+        },
+        inputs:1,
+        outputs:0,
+        icon: "font-awesome/fa-globe",
+        label: function() {
+            return this.name||"Thingspeak";
+        },
+        paletteLabel: "thingspeak",
+        oneditprepare: function() {
+            $("#node-input-delay").spinner({min: 1});
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="iqhome-thingspeak">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <br>
+    <div class="form-row">
+        <label for="node-input-apiKey"><i class="fa fa-key"></i> API Key</label>
+        <input type="password" id="node-input-apiKey" placeholder="ThingSpeak Write API Key">
+    </div>
+    <div class="form-row">
+        <label for="node-input-delay"><i class="fa fa-clock-o"></i> Delay</label>
+        <input type="text" id="node-input-delay" style="width:40px" value="15">
+    </div>
+    <br>
+    <div class="form-row">
+        <label for="node-input-topic1"><i class="fa fa-tasks"></i> Topic 1</label>
+        <input type="text" id="node-input-topic1" placeholder="Topic for Field 1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topic2"><i class="fa fa-tasks"></i> Topic 2</label>
+        <input type="text" id="node-input-topic2" placeholder="Topic for Field 2">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topic3"><i class="fa fa-tasks"></i> Topic 3</label>
+        <input type="text" id="node-input-topic3" placeholder="Topic for Field 3">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topic4"><i class="fa fa-tasks"></i> Topic 4</label>
+        <input type="text" id="node-input-topic4" placeholder="Topic for Field 4">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topic5"><i class="fa fa-tasks"></i> Topic 5</label>
+        <input type="text" id="node-input-topic5" placeholder="Topic for Field 5">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topic6"><i class="fa fa-tasks"></i> Topic 6</label>
+        <input type="text" id="node-input-topic6" placeholder="Topic for Field 6">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topic7"><i class="fa fa-tasks"></i> Topic 7</label>
+        <input type="text" id="node-input-topic7" placeholder="Topic for Field 7">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topic8"><i class="fa fa-tasks"></i> Topic 8</label>
+        <input type="text" id="node-input-topic8" placeholder="Topic for Field 8">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="iqhome-thingspeak">
+    <p>Aggregate values and post them to a ThingSpeak channel.</p>
+
+    <p>When data arrives, it is stored for a configurable period of time and then
+    posted all at once.</p>
+
+    <h3>Configuration:</h3>
+
+    <ul>
+        <li>
+            <code>API Key</code> - This is the Write API Key for your ThingSpeak channel.  You can
+            obtain it from the web site.  (Required)
+        </li>
+
+        <li>
+            <code>Delay</code> - The delay before posting data, in seconds. When the first matching
+            message arrives, the timer is started. When the time expires, all previous messages are posted to
+            ThingSpeak.
+        </li>
+
+        <li>
+            <code>Topic</code> - The incoming message topic for the given channel Field. If another message
+            with this topic arrives before the timer expires, the stored value will be
+            overwritten and the new value will be sent when the timer expires instead.
+        </li>
+    </ul>
+
+</script>

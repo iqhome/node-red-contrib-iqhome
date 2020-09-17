@@ -4,15 +4,23 @@ module.exports = function(RED) {
     function si_th(config) {
         RED.nodes.createNode(this, config);
         let node = this;
-        this.address = config.address;
 
         this.on('input', (msg, send, done) => {
             let payload = msg.payload;
             if(Array.isArray(payload)) {
                 node.status({});
                 payload.forEach(item => {
-                    if(item.device_address === parseInt(node.address)) {
-                        send([{payload: item.temperature}, {payload: item.relative_humidity}]);
+                    if(item.device_address === parseInt(config.address)) {
+                        send([
+                            {
+                                payload: item.temperature || null,
+                                topic: (config.temperatureTopic || config.default_temperatureTopic)
+                            },
+                            {
+                                payload: item.relative_humidity || null,
+                                topic: (config.humidityTopic || config.default_humidityTopic)
+                            }
+                        ]);
                         done();
                     }
                 });

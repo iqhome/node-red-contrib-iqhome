@@ -4,7 +4,9 @@
         color: '#9298a0',
         defaults: {
 			name: {value:""},
-			address: {value:"1", required:true, validate:RED.validators.number()}
+            address: {value:"1", required:true, validate:RED.validators.number()},
+            default_temperatureTopic: {value: "temperature-1"},
+            temperatureTopic: {value:""}
         },
         inputs: 1,
         outputs: 1,
@@ -16,7 +18,18 @@
         outputLabels: ['temperature'],
         inputLabels: "gateway",
         oneditprepare: function() {
+            const that = this;
             $("#node-input-address").spinner({min: 1});
+
+            $("#node-input-temperatureTopic").attr('placeholder', 'temperature-' + this.address);
+            this.default_temperatureTopic = 'temperature-' + this.address;
+
+            $(".ui-spinner-button").click(() => {
+                let addr = $("#node-input-address").val();
+                
+                $("#node-input-temperatureTopic").attr('placeholder', 'temperature-' + addr);
+                that.default_temperatureTopic = 'temperature-' + addr;
+            })
         }
     });
 </script>
@@ -29,7 +42,13 @@
     <div class="form-row">
         <label for="node-input-address" title="Device Address"><i class="fa fa-globe"></i> Address</label>
         <input type="text" id="node-input-address" style="width:40px" value="1">
-	</div>
+    </div>
+    <br>
+    <h3>Topics</h3>
+    <div class="form-row">
+        <label for="node-input-temperatureTopic"><i class="fa fa-rss"></i> Temperature</label>
+        <input type="text" id="node-input-temperatureTopic">
+    </div>
 </script>
 
 <script type="text/html" data-help-name="iqhome-si-t">
@@ -37,13 +56,16 @@
 		A decoder node for <b>IQHome SI-T</b> series sensors.
 	</p>
 
-	<h3>Outputs</h3>
-
+	<h3>Output</h3>
 	<ol class="node-ports">
 		<li>Temperature
 			<dl class="message-properties">
 				<dt>payload <span class="property-type">number</span></dt>
 				<dd>measured temperature value sent from the sensor</dd>
+            </dl>
+            <dl class="message-properties">
+				<dt>topic <span class="property-type">string</span></dt>
+				<dd>topic to send the message to (the default is temperature-{address})</dd>
 			</dl>
         </li>
 	</ol>

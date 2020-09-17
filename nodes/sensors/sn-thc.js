@@ -11,8 +11,21 @@ module.exports = function(RED) {
             if(Array.isArray(payload)) {
                 node.status({});
                 payload.forEach(item => {
-                    if(item.device_address == parseInt(node.address)) {
-                        send([{payload: item.temperature}, {payload: item.relative_humidity}, {payload: item.co2}]);
+                    if(item.device_address === parseInt(config.address)) {
+                        send([
+                            {
+                                payload: item.temperature || null,
+                                topic: (config.temperatureTopic || config.default_temperatureTopic)
+                            },
+                            {
+                                payload: item.relative_humidity || null,
+                                topic: (config.humidityTopic || config.default_humidityTopic)
+                            },
+                            {
+                                payload: item.co2 || null,
+                                topic: (config.co2Topic || config.default_co2Topic)
+                            }
+                        ]);
                         done();
                     }
                 });

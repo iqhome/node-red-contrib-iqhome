@@ -4,7 +4,13 @@
         color: '#9298a0',
         defaults: {
 			name: {value:""},
-			address: {value:"1", required:true, validate:RED.validators.number()}
+            address: {value:"1", required:true, validate:RED.validators.number()},
+            default_temperatureTopic: {value: "temperature-1"},
+            temperatureTopic: {value:""},
+            default_humidityTopic: {value: "humidity-1"},
+            humidityTopic: {value:""},
+            default_co2Topic: {value: "co2-1"},
+            co2Topic: {value:""}
         },
         inputs: 1,
         outputs: 3,
@@ -16,7 +22,26 @@
         outputLabels: ['temperature', 'humidity', 'co2'],
         inputLabels: "gateway",
         oneditprepare: function() {
+            const that = this;
             $("#node-input-address").spinner({min: 1});
+
+            $("#node-input-temperatureTopic").attr('placeholder', 'temperature-' + this.address);
+            this.default_temperatureTopic = 'temperature-' + this.address;
+            $("#node-input-humidityTopic").attr('placeholder', 'humidity-' + this.address);
+            this.default_humidityTopic = 'humidity-' + this.address;
+            $("#node-input-co2Topic").attr('placeholder', 'co2-' + this.address);
+            this.default_co2Topic = 'co2-' + this.address;
+
+            $(".ui-spinner-button").click(() => {
+                let addr = $("#node-input-address").val();
+
+                $("#node-input-temperatureTopic").attr('placeholder', 'temperature-' + addr);
+                that.default_temperatureTopic = 'temperature-' + addr;
+                $("#node-input-humidityTopic").attr('placeholder', 'humidity-' + addr);
+                that.default_humidityTopic = 'humidity-' + addr;
+                $("#node-input-co2Topic").attr('placeholder', 'co2-' + addr);
+                that.default_co2Topic = 'co2-' + addr;
+            })
         }
     });
 </script>
@@ -29,7 +54,20 @@
     <div class="form-row">
         <label for="node-input-address" title="Device Address"><i class="fa fa-globe"></i> Address</label>
         <input type="text" id="node-input-address" style="width:40px" value="1">
-	</div>
+    </div>
+    <h3>Topics</h3>
+    <div class="form-row">
+        <label for="node-input-temperatureTopic"><i class="fa fa-rss"></i> Temperature</label>
+        <input type="text" id="node-input-temperatureTopic">
+    </div>
+    <div class="form-row">
+        <label for="node-input-humidityTopic"><i class="fa fa-rss"></i> Humidity</label>
+        <input type="text" id="node-input-humidityTopic">
+    </div>
+    <div class="form-row">
+        <label for="node-input-co2Topic"><i class="fa fa-rss"></i> CO2</label>
+        <input type="text" id="node-input-co2Topic">
+    </div>
 </script>
 
 <script type="text/html" data-help-name="iqhome-sn-thc">
@@ -38,24 +76,35 @@
 	</p>
 
 	<h3>Outputs</h3>
-
 	<ol class="node-ports">
 		<li>Temperature
 			<dl class="message-properties">
 				<dt>payload <span class="property-type">number</span></dt>
 				<dd>measured temperature value sent from the sensor</dd>
+            </dl>
+            <dl class="message-properties">
+				<dt>topic <span class="property-type">string</span></dt>
+				<dd>topic to send the message to (the default is temperature-{address})</dd>
 			</dl>
         </li>
         <li>Humidity
 			<dl class="message-properties">
 				<dt>payload <span class="property-type">number</span></dt>
 				<dd>measured humidity value sent from the sensor</dd>
+            </dl>
+            <dl class="message-properties">
+				<dt>topic <span class="property-type">string</span></dt>
+				<dd>topic to send the message to (the default is humidity-{address})</dd>
 			</dl>
         </li>
         <li>CO2
 			<dl class="message-properties">
 				<dt>payload <span class="property-type">number</span></dt>
 				<dd>measured co2 value sent from the sensor</dd>
+            </dl>
+            <dl class="message-properties">
+				<dt>topic <span class="property-type">string</span></dt>
+				<dd>topic to send the message to (the default is co2-{address})</dd>
 			</dl>
 		</li>
 	</ol>

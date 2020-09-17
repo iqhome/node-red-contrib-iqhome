@@ -2,4 +2,5 @@
 Custom Node-RED nodes for [IQHome](https://iqhome.org/) products. Automate and visualize your IQHome sensor network.
 
 Currently supported data visualization platforms:
-- Adafruit IO
+- [Adafruit IO](https://io.adafruit.com/)
+- [Thingspeak](https://thingspeak.com/)

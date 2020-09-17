@@ -1,23 +1,26 @@
 <script type="text/javascript">
-    RED.nodes.registerType('iqhome-adafruit-connector',{
+    RED.nodes.registerType('iqhome-adafruit',{
         category: 'iqhome',
         color: '#9298a0',
+        credentials: {
+            apiKey: {type: "password", required: true}
+        },
         defaults: {
             name: {value: ""},
             username: {value: "", required: true},
             premium: {value: false},
         },
         inputs: 1,
-        outputs: 1,
+        outputs: 0,
         icon: "font-awesome/fa-globe",
         label: function() {
-            return this.name||"Adafruit Connector";
+            return this.name||"Adafruit";
 		},
-        paletteLabel: "adafruit-connector",
+        paletteLabel: "adafruit",
     });
 </script>
 
-<script type="text/html" data-template-name="iqhome-adafruit-connector">
+<script type="text/html" data-template-name="iqhome-adafruit">
 	<div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -25,7 +28,11 @@
     <br>
     <div class="form-row">
         <label for="node-input-username" topic="Adafruit username"><i class="fa fa-user"></i> Username</label>
-        <input type="text" id="node-input-username" placeholder="Username">
+        <input type="text" id="node-input-username">
+    </div>
+    <div class="form-row">
+        <label for="node-input-apiKey" topic="Adafruit IO Key"><i class="fa fa-key"></i> IO Key</label>
+        <input type="password" id="node-input-apiKey">
     </div>
     <br>
     <div class="form-row">
@@ -34,25 +41,24 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="iqhome-adafruit-connector">
+<script type="text/html" data-help-name="iqhome-adafruit">
     <p>
-		Format incoming data for a mqtt node connected to Adafruit IO.
-	</p>
-
-	<h3>Outputs</h3>
-
-	<ol class="node-ports">
-		<li>Standard output
+		Post incoming data to Adafruit IO.
+    </p>
+    
+    <h3>Input</h3>
+    <ol class="node-ports">
+        <li>Input
 			<dl class="message-properties">
-				<dt>payload <span class="property-type">any</span></dt>
-				<dd>forwarded from the input</dd>
+				<dt>payload <span class="property-type">number</span></dt>
+				<dd>measured value to send</dd>
             </dl>
             <dl class="message-properties">
 				<dt>topic <span class="property-type">string</span></dt>
-				<dd>formatted for Adafruit IO from <code>msg.feed</code> and <code>username</code></dd>
+				<dd>topic (feed) to send the message to</dd>
 			</dl>
 		</li>
-	</ol>
+    </ol>
 
 	<h3>Details</h3>
     <p>This node also manages the rate limiting set by Adafruit.</p>
