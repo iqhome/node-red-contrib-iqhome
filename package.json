@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-iqhome",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Custom Node-RED nodes for IQHome products.",
   "keywords": [
     "nodered",
@@ -9,6 +9,11 @@
   ],
   "author": "IQHome <io@iqhome.org>",
   "license": "ISC",
+  "homepage": "https://github.com/iqhome/node-red-contrib-iqhome",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/iqhome/node-red-contrib-iqhome"
+  },
   "node-red": {
     "nodes": {
 	    "gw-input": "nodes/gw-input.js",

@@ -7,7 +7,6 @@
         },
         defaults: {
             name: {value:""},
-            delay: {value:"15", validate:RED.validators.number()},
             topic1: {value:""},
             topic2: {value:""},
             topic3: {value:""},
@@ -16,6 +15,7 @@
             topic6: {value:""},
             topic7: {value:""},
             topic8: {value:""},
+            premium: {value: false}
         },
         inputs:1,
         outputs:0,
@@ -23,10 +23,7 @@
         label: function() {
             return this.name||"Thingspeak";
         },
-        paletteLabel: "thingspeak",
-        oneditprepare: function() {
-            $("#node-input-delay").spinner({min: 1});
-        }
+        paletteLabel: "thingspeak"
     });
 </script>
 
@@ -40,11 +37,13 @@
         <label for="node-input-apiKey"><i class="fa fa-key"></i> API Key</label>
         <input type="password" id="node-input-apiKey" placeholder="ThingSpeak Write API Key">
     </div>
+    <br>
     <div class="form-row">
-        <label for="node-input-delay"><i class="fa fa-clock-o"></i> Delay</label>
-        <input type="text" id="node-input-delay" style="width:40px" value="15">
+        <input type="checkbox" id="node-input-premium" style="display:inline-block; width:22px; vertical-align:top;">
+        <label for="node-input-premium" style="width: auto"> Thingspeak License</label>
     </div>
     <br>
+    <h3>Topics</h3>
     <div class="form-row">
         <label for="node-input-topic1"><i class="fa fa-tasks"></i> Topic 1</label>
         <input type="text" id="node-input-topic1" placeholder="Topic for Field 1">

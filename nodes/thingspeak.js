@@ -5,7 +5,6 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
         var node = this;
 
-        node.delay = config.delay;
         node.topics = [
             config.topic1,
             config.topic2,
@@ -37,7 +36,11 @@ module.exports = function(RED) {
 
         function startTimer() {
             if( node.timeout == null ) {
-                var delayMs = 1000 * node.delay;
+                let delayMs = 15000;
+                if(config.premium) {
+                    delayMs = 1000;
+                }
+
                 node.timeout = setTimeout(publishData, delayMs);
             }
         }
