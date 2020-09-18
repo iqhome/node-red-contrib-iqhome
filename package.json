@@ -22,7 +22,8 @@
       "si-th": "nodes/sensors/si-th.js",
       "si-t": "nodes/sensors/si-t.js",
       "adafruit": "nodes/adafruit.js",
-      "thingspeak": "nodes/thingspeak.js"
+      "thingspeak": "nodes/thingspeak.js",
+      "google-sheets": "nodes/google-sheets.js"
     }
   }
 }

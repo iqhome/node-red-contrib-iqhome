@@ -81,21 +81,22 @@
 <script type="text/html" data-help-name="iqhome-thingspeak">
     <p>Aggregate values and post them to a ThingSpeak channel.</p>
 
-    <p>When data arrives, it is stored for a configurable period of time and then
-    posted all at once.</p>
+    <p>When data arrives, it is stored for a configurable period of time (15 seconds 
+        for the free account or 1 second for the paid) and then gets posted all at once.
+    </p>
 
     <h3>Configuration:</h3>
 
     <ul>
         <li>
-            <code>API Key</code> - This is the Write API Key for your ThingSpeak channel.  You can
-            obtain it from the web site.  (Required)
+            <code>API Key</code> - This is the Write API Key for your ThingSpeak channel. You can
+            obtain it from the web site. (Required)
         </li>
 
         <li>
-            <code>Delay</code> - The delay before posting data, in seconds. When the first matching
-            message arrives, the timer is started. When the time expires, all previous messages are posted to
-            ThingSpeak.
+            <code>Thingspeak License</code> - With the default account, Thingspeak only allows one 
+            message every 15 seconds. If you have a paid subscription, you can tick this checkbox to 
+            increase the node's data rate to one message per second.
         </li>
 
         <li>

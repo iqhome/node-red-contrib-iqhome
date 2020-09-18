@@ -4,7 +4,6 @@ module.exports = function(RED) {
     function sn_thc(config) {
         RED.nodes.createNode(this, config);
         let node = this;
-        this.address = config.address;
 
         this.on('input', (msg, send, done) => {
             let payload = msg.payload;
