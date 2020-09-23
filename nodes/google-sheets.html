@@ -1,0 +1,64 @@
+<script type="text/javascript">
+    RED.nodes.registerType('iqhome-google-sheets',{
+        category: 'iqhome',
+        color: '#C0DEED',
+        defaults: {
+            name: {value: ""},
+            scriptURL: {value: "", required: true},
+            sheetURL: {value: "", required: true}
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "font-awesome/fa-table",
+        label: function() {
+            return this.name||"Google Sheets";
+		},
+        paletteLabel: "google sheets",
+    });
+</script>
+
+<script type="text/html" data-template-name="iqhome-google-sheets">
+	<div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <br>
+    <p>You can find the documentation here:
+        <a href="#" target="popup" style="color: #ad1625" onclick="window.open('https://www.iqhome.org/uploading-sensor-data-to-google-spreadsheet-with-node-red','newwindow','width='+screen.width+',height='+screen.height);return false;">IQHome Google Sheets</a></p>
+    <br>
+    <div class="form-row">
+        <label for="node-input-scriptURL"><i class="fa fa-link"></i> Script URL</label>
+        <input type="text" id="node-input-scriptURL">
+    </div>
+    <div class="form-row">
+        <label for="node-input-sheetURL"><i class="fa fa-link"></i> Sheet URL</label>
+        <input type="text" id="node-input-sheetURL">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="iqhome-google-sheets">
+    <p>
+		Post incoming data to Adafruit IO.
+    </p>
+    
+    <h3>Input</h3>
+    <ol class="node-ports">
+        <li>Input
+			<dl class="message-properties">
+				<dt>payload <span class="property-type">number</span></dt>
+				<dd>measured value to send</dd>
+            </dl>
+            <dl class="message-properties">
+				<dt>topic <span class="property-type">string</span></dt>
+				<dd>topic (feed) to send the message to</dd>
+			</dl>
+		</li>
+    </ol>
+
+	<h3>Details</h3>
+    <p>This node also manages the rate limiting set by Adafruit.</p>
+    <p>
+        Without a paid Adafruit IO+ subscription it limits throughput to ~30 messages per minute or
+        to ~60 messages per minute with the subscription.
+    </p>
+</script>
