@@ -34,7 +34,6 @@ module.exports = function(RED) {
             };
 
             const req = https.request(options, response => {
-                console.log(response.statusCode, response.statusMessage);
                 if(response.statusCode == 200) {
                     node.status({fill:'green',shape:'dot',text:'OK'});
                 } else {
