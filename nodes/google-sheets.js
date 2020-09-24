@@ -34,6 +34,7 @@ module.exports = function(RED) {
 
                 const sheetId = regex.exec(config.sheetURL);
                 if(sheetId) {
+                    msg.payload.sort((a, b) => (a.device_address > b.device_address) ? 1 : -1);
                     const body = JSON.stringify({
                         spreadsheet: sheetId[0],
                         devices: devices,
