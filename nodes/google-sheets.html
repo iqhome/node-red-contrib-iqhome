@@ -38,27 +38,23 @@
 
 <script type="text/html" data-help-name="iqhome-google-sheets">
     <p>
-		Post incoming data to Adafruit IO.
+		Post incoming data to Google Sheets.
     </p>
     
     <h3>Input</h3>
     <ol class="node-ports">
         <li>Input
 			<dl class="message-properties">
-				<dt>payload <span class="property-type">number</span></dt>
-				<dd>measured value to send</dd>
+				<dt>payload <span class="property-type">object</span></dt>
+				<dd>array containing measurement data objects from each sensor connected to the gateway</dd>
             </dl>
-            <dl class="message-properties">
-				<dt>topic <span class="property-type">string</span></dt>
-				<dd>topic (feed) to send the message to</dd>
-			</dl>
 		</li>
     </ol>
 
 	<h3>Details</h3>
-    <p>This node also manages the rate limiting set by Adafruit.</p>
     <p>
-        Without a paid Adafruit IO+ subscription it limits throughput to ~30 messages per minute or
-        to ~60 messages per minute with the subscription.
+        This node logs data to 3 sheets in a single spreadsheet.
+        These sheets must have the names <b>Temperature, Humidity, CO2</b>.
+        It also adds a timestamp as the first column.
     </p>
 </script>
