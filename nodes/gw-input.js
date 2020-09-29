@@ -28,7 +28,9 @@ module.exports = function(RED) {
 			try {
 				var obj = JSON.parse(msg.toString());
 				if(obj.message_topic === '$GW/application' || obj.message_topic === '$GW/sensnet') {
-					node.send({payload: obj.message.values});
+					if(obj.message.hasOwnProperty('values')) {
+						node.send({payload: obj.message.values});
+					}
 				}
 				node.status({fill: 'green', shape: 'dot', text: 'listening'});
 			} catch(e) {
