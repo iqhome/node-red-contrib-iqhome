@@ -12,7 +12,7 @@ module.exports = function(RED) {
 
 		if(!usedPorts.hasOwnProperty(node.port)) {
 			server = dgram.createSocket('udp4');
-			server.bind(node.port);
+			server.bind(node.port, "127.0.0.1");
 			usedPorts[node.port] = server;
 		} else {
 			server = usedPorts[node.port];
